@@ -1,0 +1,968 @@
+<title>La Tombola de la Quinzaine — AT225 Dorado Ivory</title>
+<style>
+  :root {
+    --cream: #FBF2E4;
+    --paper: #FFFFFF;
+    --ink: #2A1C10;
+    --ink-soft: #6B5644;
+    --shell: #C4622B;
+    --shell-deep: #9C4A1E;
+    --forest: #1E6B4C;
+    --forest-deep: #144B35;
+    --gold: #DDA23A;
+    --line: rgba(42, 28, 16, 0.14);
+    --shadow: rgba(42, 28, 16, 0.16);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --cream: #1A130C;
+      --paper: #241A10;
+      --ink: #F3E7D6;
+      --ink-soft: #C6AF97;
+      --shell: #E68A48;
+      --shell-deep: #F0A868;
+      --forest: #45A67C;
+      --forest-deep: #6BC79E;
+      --gold: #F0C368;
+      --line: rgba(243, 231, 214, 0.14);
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream: #1A130C;
+    --paper: #241A10;
+    --ink: #F3E7D6;
+    --ink-soft: #C6AF97;
+    --shell: #E68A48;
+    --shell-deep: #F0A868;
+    --forest: #45A67C;
+    --forest-deep: #6BC79E;
+    --gold: #F0C368;
+    --line: rgba(243, 231, 214, 0.14);
+    --shadow: rgba(0, 0, 0, 0.45);
+  }
+  :root[data-theme="light"] {
+    --cream: #FBF2E4;
+    --paper: #FFFFFF;
+    --ink: #2A1C10;
+    --ink-soft: #6B5644;
+    --shell: #C4622B;
+    --shell-deep: #9C4A1E;
+    --forest: #1E6B4C;
+    --forest-deep: #144B35;
+    --gold: #DDA23A;
+    --line: rgba(42, 28, 16, 0.14);
+    --shadow: rgba(42, 28, 16, 0.16);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ---------- Hero ---------- */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--forest);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: var(--forest);
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    margin: 0.5rem 0 0.9rem;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--shell);
+  }
+
+  .lede {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin: 0 0 1.8rem;
+  }
+  .lede strong { color: var(--ink); font-weight: 700; }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2.6rem;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.7rem 1.05rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow);
+    min-width: 132px;
+  }
+  .stat .n {
+    font-variant-numeric: tabular-nums;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--shell);
+  }
+  .stat .l {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ticket-strip divider */
+  .ticket-strip {
+    display: flex;
+    gap: 6px;
+    padding: 10px 0 2.6rem;
+    overflow: hidden;
+  }
+  .ticket-strip span {
+    flex: 1;
+    height: 10px;
+    min-width: 4px;
+    border-radius: 2px;
+    background: repeating-linear-gradient(90deg, var(--shell) 0 6px, transparent 6px 12px);
+    opacity: 0.55;
+  }
+
+  /* ---------- Draw section ---------- */
+  .draw {
+    background: linear-gradient(180deg, var(--forest-deep), var(--forest));
+    border-radius: 20px;
+    padding: 2.4rem 1.8rem;
+    text-align: center;
+    box-shadow: 0 14px 34px var(--shadow);
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .draw::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+  .draw h2 {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #FFF8EC;
+    margin: 0 0 1.2rem;
+    letter-spacing: 0.01em;
+  }
+
+  .spotlight {
+    position: absolute;
+    inset: -45%;
+    margin: auto;
+    width: 190%;
+    height: 190%;
+    background: conic-gradient(from 0deg,
+      transparent 0deg, rgba(255,248,236,0.28) 7deg, transparent 15deg,
+      transparent 55deg, rgba(255,248,236,0.2) 62deg, transparent 70deg,
+      transparent 110deg, rgba(255,248,236,0.24) 117deg, transparent 125deg,
+      transparent 165deg, rgba(255,248,236,0.18) 172deg, transparent 180deg,
+      transparent 220deg, rgba(255,248,236,0.24) 227deg, transparent 235deg,
+      transparent 275deg, rgba(255,248,236,0.2) 282deg, transparent 290deg,
+      transparent 330deg, rgba(255,248,236,0.26) 337deg, transparent 345deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .spotlight.active {
+    animation: spotlightSpin 3.2s linear, spotlightFade 2.8s ease forwards;
+  }
+  @keyframes spotlightSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes spotlightFade {
+    0% { opacity: 0; }
+    12% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes shakeMed {
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-3px); }
+    40%, 60% { transform: translateX(3px); }
+  }
+  @keyframes shakeBig {
+    10%, 90% { transform: translate(-2px, 1px); }
+    20%, 80% { transform: translate(4px, -2px); }
+    30%, 50%, 70% { transform: translate(-7px, 2px); }
+    40%, 60% { transform: translate(7px, -2px); }
+  }
+  .draw.shake-2 { animation: shakeMed 0.5s ease; }
+  .draw.shake-3 { animation: shakeBig 0.7s ease; }
+
+  #flashOverlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 32%, rgba(221,162,58,0.95), rgba(221,162,58,0) 68%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 60;
+  }
+  #flashOverlay.active { animation: flashPulse 1s ease; }
+  @keyframes flashPulse {
+    0% { opacity: 0; }
+    18% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  .reel {
+    position: relative;
+    background: #FFF8EC;
+    border-radius: 14px;
+    padding: 1.7rem 1.3rem;
+    margin: 0 auto 1.4rem;
+    max-width: 560px;
+    box-shadow: inset 0 0 0 2px rgba(42,28,16,0.08), 0 8px 20px rgba(0,0,0,0.25);
+  }
+  .reel::before, .reel::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    background: var(--forest);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  .reel::before { left: -11px; }
+  .reel::after { right: -11px; }
+
+  .reel-rank {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--shell-deep);
+    margin-bottom: 0.3rem;
+  }
+  .reel-name {
+    font-family: Georgia, serif;
+    font-weight: 800;
+    font-size: clamp(1.7rem, 6vw, 2.5rem);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: var(--ink);
+    min-height: 1.3em;
+    transition: transform 0.15s ease;
+  }
+  .reel-name.reel-landed {
+    color: var(--shell-deep);
+    animation: pop 0.5s ease;
+  }
+  .reel-name.reel-landed-3 {
+    color: var(--shell-deep);
+    animation: popBig 0.9s ease;
+    text-shadow: 0 0 18px rgba(221,162,58,0.6);
+  }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+  @keyframes popBig {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.22) rotate(-2deg); }
+    50% { transform: scale(1.05) rotate(1.5deg); }
+    75% { transform: scale(1.16) rotate(-1deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+  .reel-meta {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-top: 0.25rem;
+    min-height: 1.2em;
+  }
+
+  button.draw-btn {
+    font: inherit;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    color: var(--forest-deep);
+    background: var(--gold);
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 2.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.2s ease;
+  }
+  button.draw-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 9px 20px rgba(0,0,0,0.3); }
+  button.draw-btn:active:not(:disabled) { transform: translateY(0); }
+  button.draw-btn:disabled { opacity: 0.55; cursor: default; }
+  button.draw-btn:focus-visible { outline: 3px solid #FFF8EC; outline-offset: 3px; }
+
+  .reset-link {
+    display: block;
+    margin: 0.9rem auto 0;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 0.82rem;
+    color: rgba(255,248,236,0.75);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0.3rem;
+  }
+  .reset-link:focus-visible { outline: 2px solid #FFF8EC; }
+
+  /* ---------- Podium ---------- */
+  .podium {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 640px) {
+    .podium { grid-template-columns: 1fr; }
+  }
+  .podium-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .podium-slot {
+    background: var(--paper);
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    padding: 1.1rem 1rem;
+    min-height: 118px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    position: relative;
+  }
+  .podium-slot .rank {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--shell);
+  }
+  .podium-slot .name {
+    font-family: Georgia, serif;
+    font-weight: 800;
+    font-size: 1.35rem;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .podium-slot .meta {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .podium-slot.empty {
+    align-items: center;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    border-style: dashed;
+  }
+  .podium-slot.filled {
+    border-style: solid;
+    border-color: var(--gold);
+    box-shadow: 0 4px 14px var(--shadow);
+  }
+
+  .prize-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.9rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    text-align: center;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .prize-icon {
+    width: 60px;
+    height: 60px;
+  }
+  .prize-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .prize-label {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .prize-card.won {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 35%, transparent), 0 6px 16px var(--shadow);
+    animation: prizeWon 0.6s ease;
+  }
+  .prize-card.won .prize-label {
+    color: var(--shell-deep);
+  }
+  @keyframes prizeWon {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+
+  /* ---------- Eligible list ---------- */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-family: Georgia, serif;
+    font-size: 1.35rem;
+    margin: 0;
+  }
+  .section-head p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper);
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 560px;
+    font-size: 0.88rem;
+  }
+  thead th {
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    text-align: left;
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+  }
+  td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr.is-winner { background: color-mix(in srgb, var(--gold) 16%, transparent); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.ticket-no { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  td .poste { color: var(--ink-soft); font-size: 0.82rem; }
+
+  footer {
+    margin-top: 3rem;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 1.2rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  #confetti-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+  }
+</style>
+
+<div class="wrap">
+
+  <p class="eyebrow">AT225 · Dorado Ivory SA · Toumodi</p>
+  <h1>La Tombola <em>de la Quinzaine</em></h1>
+  <p class="lede">
+    Quinzaine du <strong>1er au 15 juillet 2026</strong>. Chaque journalier ayant dépassé
+    <strong>80 heures travaillées</strong> sur la période reçoit un ticket.
+    Trois tickets sont tirés au sort en direct pour remporter un goodie.
+  </p>
+
+  <div class="stats">
+    <div class="stat"><span class="n" id="statTickets">–</span><span class="l">Tickets en jeu</span></div>
+    <div class="stat"><span class="n">80h</span><span class="l">Seuil d'éligibilité</span></div>
+    <div class="stat"><span class="n">3</span><span class="l">Gagnants tirés</span></div>
+  </div>
+
+  <div class="ticket-strip" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <section class="draw">
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+    <h2>Tirage au sort en direct</h2>
+    <div class="reel">
+      <div class="reel-rank" id="reelRank">Prêt·e pour le tirage</div>
+      <div class="reel-name" id="reelName">?</div>
+      <div class="reel-meta" id="reelMeta">Appuyez sur le bouton pour lancer</div>
+    </div>
+    <button class="draw-btn" id="drawBtn" type="button">Tirer la 3ᵉ place</button>
+    <button class="reset-link" id="resetBtn" type="button" hidden>Relancer un nouveau tirage</button>
+  </section>
+
+  <div id="flashOverlay" aria-hidden="true"></div>
+
+  <div class="podium" id="podium">
+    <div class="podium-col">
+      <div class="podium-slot empty" data-slot="1">En attente du grand gagnant</div>
+      <div class="prize-card" data-slot="1">
+        <div class="prize-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="T-shirt AT225">
+            <path d="M22 8 L14 8 L4 20 L14 27 L14 56 L50 56 L50 27 L60 20 L50 8 L42 8 C42 13 22 13 22 8 Z" fill="var(--shell)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="20" y="28" width="24" height="10" rx="2" fill="var(--paper)"/>
+            <text x="32" y="35.4" font-family="Arial, Helvetica, sans-serif" font-size="6" font-weight="800" fill="var(--ink)" text-anchor="middle">AT225</text>
+          </svg>
+        </div>
+        <div class="prize-label">T-shirt AT225</div>
+      </div>
+    </div>
+    <div class="podium-col">
+      <div class="podium-slot empty" data-slot="2">En attente de la 2ᵉ place</div>
+      <div class="prize-card" data-slot="2">
+        <div class="prize-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Casquette AT225">
+            <path d="M14 34 C14 16 50 16 50 34 L50 36 L14 36 Z" fill="var(--forest)"/>
+            <path d="M14 35 C4 35 2 42 10 43.5 C18 45 22 38 22 36 Z" fill="var(--forest-deep)" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"/>
+            <rect x="21" y="23" width="22" height="10" rx="2" fill="var(--paper)"/>
+            <text x="32" y="30.4" font-family="Arial, Helvetica, sans-serif" font-size="5.6" font-weight="800" fill="var(--ink)" text-anchor="middle">AT225</text>
+            <circle cx="32" cy="17.5" r="2.3" fill="var(--gold)"/>
+          </svg>
+        </div>
+        <div class="prize-label">Casquette AT225</div>
+      </div>
+    </div>
+    <div class="podium-col">
+      <div class="podium-slot empty" data-slot="3">En attente de la 3ᵉ place</div>
+      <div class="prize-card" data-slot="3">
+        <div class="prize-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mug AT225">
+            <path d="M44 26 C55 26 55 42 44 42" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>
+            <rect x="13" y="20" width="31" height="30" rx="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.2"/>
+            <path d="M13 25 L44 25 L44 20 C44 20 44 20 44 20 L13 20 Z" fill="var(--shell)"/>
+            <rect x="13" y="20" width="31" height="7" rx="3" fill="var(--shell)"/>
+            <text x="28.5" y="25.6" font-family="Arial, Helvetica, sans-serif" font-size="5.4" font-weight="800" fill="var(--ink)" text-anchor="middle">AT225</text>
+            <path d="M21 14 C21 10 25 10 23 6" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+            <path d="M29 14 C29 10 33 10 31 6" fill="none" stroke="var(--ink-soft)" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+          </svg>
+        </div>
+        <div class="prize-label">Mug AT225</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Liste des éligibles</h2>
+    <p id="listCount">— tickets, triés par heures décroissantes</p>
+  </div>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Nom</th>
+          <th>Atelier</th>
+          <th class="num">Heures</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <footer>
+    Données issues des factures AT225 n° 727 à 733 (période 01/07 – 15/07/2026). Tirage réalisé
+    aléatoirement dans le navigateur — rechargez la page pour repartir d'une liste neutre avant un
+    nouveau tirage en direct.
+  </footer>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<script>
+const eligibles = [
+    { "Nom": "Legre Zigo Stephane", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 120 },
+    { "Nom": "Mmadu Justin Chidiebere", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 112 },
+    { "Nom": "Kone Karim", "Poste": "Operateur", "Categorie": "Cooking", "Heures": 104 },
+    { "Nom": "Gnamou Daniel", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 104 },
+    { "Nom": "Coulibaly Zié Mamadou", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 104 },
+    { "Nom": "Bilson Tanoh Charles Yannick", "Poste": "Manutentionnaire BoilerA", "Categorie": "MAINTENANCE - Boiler A", "Heures": 104 },
+    { "Nom": "Nene Bi Jean Marc", "Poste": "Manutentionnaire", "Categorie": "MAINTENANCE - Boiler B", "Heures": 104 },
+    { "Nom": "Akinpeloye Idowu Seun", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 96 },
+    { "Nom": "Housseni Moutamari", "Poste": "Manutentionnaire", "Categorie": "Dorado B - Calibration Cooking - Manutentionnaires", "Heures": 96 },
+    { "Nom": "Kouacou Yao Sylvain", "Poste": "Operateur", "Categorie": "Borma Cooler", "Heures": 96 },
+    { "Nom": "Sidibe Oumar", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 96 },
+    { "Nom": "Kouadio Kouadio Jonas", "Poste": "Manutentionnaire", "Categorie": "Warehouse - Manutentionnaires", "Heures": 90 },
+    { "Nom": "Kouassi Aya Andréa Fabienne", "Poste": "Agent de sécurité", "Categorie": "Agent de sécurité", "Heures": 88 },
+    { "Nom": "Esther Samuel Udoh", "Poste": "Operateur", "Categorie": "Packing", "Heures": 88 },
+    { "Nom": "Guie Bi Irie Frederic", "Poste": "Operateur", "Categorie": "Shelling", "Heures": 88 },
+    { "Nom": "Yakeuse Cedrique", "Poste": "Superviseur", "Categorie": "Supervisor/Trainer", "Heures": 88 },
+    { "Nom": "Yao Kouakou Fabrice", "Poste": "Machiniste", "Categorie": "Packing", "Heures": 88 },
+    { "Nom": "Sanogo Bourama", "Poste": "Operateur", "Categorie": "Peeling", "Heures": 88 },
+    { "Nom": "Koffi N'Da Kouamé Simplice", "Poste": "Operateur", "Categorie": "Shelling", "Heures": 88 },
+    { "Nom": "Kouassi Koua Armel", "Poste": "Operateur", "Categorie": "Borma Cooler", "Heures": 88 },
+    { "Nom": "N'guessan Kouassi Emmanuel", "Poste": "Operateur", "Categorie": "Peeling", "Heures": 88 },
+    { "Nom": "Guinan Adjoua Catherine", "Poste": "Manutentionnaire", "Categorie": "Warehouse - Manutentionnaires", "Heures": 88 },
+    { "Nom": "Ibrahim Taiye Habibbulahi", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 88 },
+    { "Nom": "Chibueze David Ikeji", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 88 },
+    { "Nom": "Kané Siafa", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 88 },
+    { "Nom": "Kane ohi", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 88 },
+    { "Nom": "Oguntade Oluwatimileyin", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 88 },
+    { "Nom": "Ibrahim Ganiyu", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 88 },
+    { "Nom": "Stephen Nicholas", "Poste": "Opérateur", "Categorie": "MAINTENANCE - Boiler B", "Heures": 88 },
+    { "Nom": "Diabate Tiemoko", "Poste": "Aide Soudeur", "Categorie": "MAINTENANCE - Boiler A", "Heures": 88 },
+    { "Nom": "Kane Namory", "Poste": "Manutentionnaire", "Categorie": "CNSL", "Heures": 88 },
+    { "Nom": "Bassey Michael Esin", "Poste": "Opérateur", "Categorie": "MAINTENANCE - Boiler A", "Heures": 88 },
+    { "Nom": "N'Guessan Amani Jean Mickael", "Poste": "Manutensionnaire", "Categorie": "MAINTENANCE - Boiler A", "Heures": 88 },
+    { "Nom": "Kouadio N'Guessan Eliezer", "Poste": "Manutentionnaire", "Categorie": "Warehouse - Manutentionnaires", "Heures": 82 },
+    { "Nom": "Nianva N'Guessan Franck Martial", "Poste": "Manutentionnaire", "Categorie": "Warehouse - Manutentionnaires", "Heures": 82 }
+];
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+document.getElementById("statTickets").textContent = eligibles.length;
+document.getElementById("listCount").textContent = eligibles.length + " tickets, triés par heures décroissantes";
+
+const tbody = document.getElementById("tableBody");
+eligibles.forEach((p, i) => {
+  const tr = document.createElement("tr");
+  tr.dataset.name = p.Nom;
+  tr.innerHTML =
+    '<td class="ticket-no num">' + (i + 1) + '</td>' +
+    '<td>' + p.Nom + '<div class="poste">' + p.Poste + '</div></td>' +
+    '<td>' + p.Categorie + '</td>' +
+    '<td class="num">' + p.Heures + '</td>';
+  tbody.appendChild(tr);
+});
+
+let pool = eligibles.slice();
+let winners = [];
+const MAX_WINNERS = 3;
+const drawOrder = [3, 2, 1];
+
+const drawBtn = document.getElementById("drawBtn");
+const resetBtn = document.getElementById("resetBtn");
+const reelRank = document.getElementById("reelRank");
+const reelName = document.getElementById("reelName");
+const reelMeta = document.getElementById("reelMeta");
+const spotlightEl = document.getElementById("spotlight");
+const flashOverlay = document.getElementById("flashOverlay");
+const drawSection = document.querySelector(".draw");
+
+function ordinal(n) {
+  return n === 1 ? "1ᵉʳ" : n + "ᵉ";
+}
+
+function currentRank() {
+  return drawOrder[winners.length];
+}
+
+function updateButtonLabel() {
+  if (winners.length >= MAX_WINNERS) {
+    drawBtn.textContent = "Tirage terminé";
+    drawBtn.disabled = true;
+    resetBtn.hidden = false;
+  } else {
+    const rank = currentRank();
+    drawBtn.textContent = rank === 1 ? "Tirer le grand gagnant" : "Tirer la " + ordinal(rank) + " place";
+  }
+}
+
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) audioCtx = new AC();
+  }
+  return audioCtx;
+}
+
+function playTone(freq, startTime, duration, type, gainPeak) {
+  const ctx2 = getAudioCtx();
+  if (!ctx2) return;
+  const osc = ctx2.createOscillator();
+  const gain = ctx2.createGain();
+  osc.type = type || "sine";
+  osc.frequency.value = freq;
+  const t0 = ctx2.currentTime + startTime;
+  gain.gain.setValueAtTime(0.0001, t0);
+  gain.gain.exponentialRampToValueAtTime(gainPeak || 0.2, t0 + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
+  osc.connect(gain).connect(ctx2.destination);
+  osc.start(t0);
+  osc.stop(t0 + duration + 0.05);
+}
+
+function playTick() {
+  playTone(1500 + Math.random() * 300, 0, 0.045, "square", 0.045);
+}
+
+function playChime(level) {
+  if (level === 1) {
+    playTone(880, 0, 0.18, "sine", 0.16);
+    playTone(1318.51, 0.09, 0.24, "sine", 0.14);
+  } else if (level === 2) {
+    [659.25, 783.99, 987.77, 1174.66].forEach((f, i) => playTone(f, i * 0.09, 0.28, "sine", 0.17));
+  } else {
+    playTone(98, 0, 0.5, "sawtooth", 0.14);
+    [523.25, 659.25, 783.99, 1046.5, 1318.51, 1567.98].forEach((f, i) =>
+      playTone(f, i * 0.1, 0.45, "triangle", 0.2)
+    );
+    playTone(65.41, 0.55, 0.6, "sine", 0.22);
+  }
+}
+
+function animateReel(winner, level, cb) {
+  if (reduceMotion) {
+    reelName.textContent = winner.Nom;
+    reelMeta.textContent = winner.Poste + " · " + winner.Categorie + " · " + winner.Heures + "h";
+    setTimeout(cb, 150);
+    return;
+  }
+  const names = eligibles.map(p => p.Nom);
+  const totalSpin = 6000;
+  const spinStart = performance.now();
+  function tick() {
+    const elapsed = performance.now() - spinStart;
+    if (elapsed < totalSpin) {
+      reelName.textContent = names[Math.floor(Math.random() * names.length)];
+      playTick();
+      reelMeta.textContent = " ";
+      const progress = elapsed / totalSpin;
+      const delay = 45 + Math.pow(progress, 3) * 520;
+      setTimeout(tick, delay);
+    } else {
+      reelName.textContent = winner.Nom;
+      reelMeta.textContent = winner.Poste + " · " + winner.Categorie + " · " + winner.Heures + "h";
+      const landedClass = level === 3 ? "reel-landed-3" : "reel-landed";
+      reelName.classList.add(landedClass);
+      setTimeout(() => { reelName.classList.remove(landedClass); cb(); }, level === 3 ? 900 : 550);
+    }
+  }
+  tick();
+}
+
+function fillPodium(rank, winner) {
+  const slot = document.querySelector('.podium-slot[data-slot="' + rank + '"]');
+  slot.classList.remove("empty");
+  slot.classList.add("filled");
+  slot.innerHTML =
+    '<div class="rank">' + (rank === 1 ? "Grand gagnant" : ordinal(rank) + " place") + '</div>' +
+    '<div class="name">' + winner.Nom + '</div>' +
+    '<div class="meta">' + winner.Poste + ' · ' + winner.Heures + 'h</div>';
+  const prizeCard = document.querySelector('.prize-card[data-slot="' + rank + '"]');
+  if (prizeCard) prizeCard.classList.add("won");
+}
+
+function markWinnerInTable(name) {
+  const row = tbody.querySelector('tr[data-name="' + CSS.escape(name) + '"]');
+  if (row) row.classList.add("is-winner");
+}
+
+function shakeElement(level) {
+  drawSection.classList.remove("shake-2", "shake-3");
+  void drawSection.offsetWidth;
+  drawSection.classList.add(level === 3 ? "shake-3" : "shake-2");
+}
+
+function flashScreen() {
+  flashOverlay.classList.remove("active");
+  void flashOverlay.offsetWidth;
+  flashOverlay.classList.add("active");
+}
+
+function activateSpotlight() {
+  spotlightEl.classList.remove("active");
+  void spotlightEl.offsetWidth;
+  spotlightEl.classList.add("active");
+}
+
+function revealEffects(level) {
+  playChime(level);
+  if (reduceMotion) return;
+  if (level === 1) {
+    fireConfettiBurst(50, 0.5, 40);
+  } else if (level === 2) {
+    shakeElement(2);
+    fireConfettiBurst(90, 0.3, 30);
+    setTimeout(function () { fireConfettiBurst(90, 0.7, 30); }, 140);
+  } else {
+    shakeElement(3);
+    flashScreen();
+    activateSpotlight();
+    fireConfettiBurst(150, 0.5, 60);
+    setTimeout(function () { fireConfettiBurst(140, 0.15, 55); }, 160);
+    setTimeout(function () { fireConfettiBurst(140, 0.85, 55); }, 160);
+    setTimeout(function () { fireConfettiBurst(120, 0.5, 45); }, 420);
+    setTimeout(function () { shakeElement(3); }, 520);
+  }
+}
+
+function drawNext() {
+  if (pool.length === 0 || winners.length >= MAX_WINNERS) return;
+  getAudioCtx();
+  const rank = currentRank();
+  const level = rank === 3 ? 1 : rank === 2 ? 2 : 3;
+  drawBtn.disabled = true;
+  reelRank.textContent = rank === 1 ? "Tirage du grand gagnant…" : "Tirage de la " + ordinal(rank) + " place…";
+  const idx = Math.floor(Math.random() * pool.length);
+  const winner = pool[idx];
+  pool.splice(idx, 1);
+  animateReel(winner, level, () => {
+    winners.push(winner);
+    fillPodium(rank, winner);
+    markWinnerInTable(winner.Nom);
+    revealEffects(level);
+    reelRank.textContent = rank === 1 ? "Grand gagnant révélé" : ordinal(rank) + " place révélée";
+    drawBtn.disabled = false;
+    updateButtonLabel();
+  });
+}
+
+function resetDraw() {
+  pool = eligibles.slice();
+  winners = [];
+  reelRank.textContent = "Prêt·e pour le tirage";
+  reelName.textContent = "?";
+  reelMeta.textContent = "Appuyez sur le bouton pour lancer";
+  [1, 2, 3].forEach(r => {
+    const slot = document.querySelector('.podium-slot[data-slot="' + r + '"]');
+    slot.classList.remove("filled");
+    slot.classList.add("empty");
+    slot.textContent = r === 1 ? "En attente du grand gagnant" : "En attente de la " + ordinal(r) + " place";
+  });
+  tbody.querySelectorAll("tr.is-winner").forEach(tr => tr.classList.remove("is-winner"));
+  document.querySelectorAll(".prize-card.won").forEach(el => el.classList.remove("won"));
+  drawSection.classList.remove("shake-2", "shake-3");
+  spotlightEl.classList.remove("active");
+  drawBtn.disabled = false;
+  resetBtn.hidden = true;
+  updateButtonLabel();
+}
+
+drawBtn.addEventListener("click", drawNext);
+resetBtn.addEventListener("click", resetDraw);
+updateButtonLabel();
+
+/* ---------- confetti ---------- */
+const canvas = document.getElementById("confetti-canvas");
+const ctx = canvas.getContext("2d");
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+const confettiColors = ["#C4622B", "#1E6B4C", "#DDA23A", "#FBF2E4", "#9C4A1E"];
+
+let activeConfetti = [];
+let confettiRunning = false;
+
+function fireConfettiBurst(count, originXRatio, spread) {
+  const originX = window.innerWidth * originXRatio;
+  for (let i = 0; i < count; i++) {
+    activeConfetti.push({
+      x: originX + (Math.random() - 0.5) * spread * 2,
+      y: window.innerHeight * 0.3 + (Math.random() - 0.5) * 40,
+      vx: (Math.random() - 0.5) * 7,
+      vy: -Math.random() * 8 - 3,
+      size: 5 + Math.random() * 6,
+      color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+      rot: Math.random() * Math.PI,
+      vrot: (Math.random() - 0.5) * 0.35,
+      born: performance.now()
+    });
+  }
+  if (!confettiRunning) {
+    confettiRunning = true;
+    requestAnimationFrame(confettiFrame);
+  }
+}
+
+function confettiFrame(now) {
+  const gravity = 0.22;
+  const lifespan = 2100;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  activeConfetti = activeConfetti.filter(function (p) { return now - p.born < lifespan; });
+  activeConfetti.forEach(function (p) {
+    p.vy += gravity;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.rot += p.vrot;
+    const age = now - p.born;
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.globalAlpha = Math.max(0, 1 - age / lifespan);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size / 2, -p.size / 3, p.size, p.size * 0.66);
+    ctx.restore();
+  });
+  if (activeConfetti.length > 0) {
+    requestAnimationFrame(confettiFrame);
+  } else {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    confettiRunning = false;
+  }
+}
+</script>
